@@ -1,107 +1,213 @@
-/* ===== Global Styles ===== */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f7f7f7;
+
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #ffffff;
   color: #333;
+  flex-direction: column;
 }
 
-/* ===== Header & Nav ===== */
+
 header {
-  background-color: #333;
+  background-color: #0b3d91; /* Royal Blue */
   color: white;
-  padding: 15px 0;
-  text-align: center;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-nav a {
-  color: white;
-  margin: 0 15px;
+.logo {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+nav ul li a {
   text-decoration: none;
-  font-weight: bold;
+  color: white;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
 }
 
-nav a:hover {
-  color: yellow;
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: white;
+  transition: width 0.3s ease;
 }
 
-/* ===== Hero Section ===== */
+nav ul li a:hover::after,
+nav ul li a.active::after {
+  width: 100%;
+}
+
+
 .hero {
   text-align: center;
-  padding: 60px 20px;
-  background: linear-gradient(to right, #4facfe, #00f2fe);
-  color: white;
+  padding: 100px 20px;
+  background-color: #f2f6ff;
+  animation: fadeIn 1.2s ease;
 }
 
-.hero .btn {
+.hero h2 {
+  color: #0b3d91;
+  font-size: 36px;
+  margin-bottom: 15px;
+  animation: slideDown 1s ease;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 25px;
+  color: #444;
+}
+
+.btn {
   display: inline-block;
-  background-color: white;
-  color: #0077cc;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.hero .btn:hover {
-  background-color: #0077cc;
+  background-color: #0b3d91;
   color: white;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* ===== About Section ===== */
-.about {
+.btn:hover {
+  background-color: #072d6a;
+  transform: scale(1.05);
+}
+
+
+.content {
+  max-width: 800px;
+  margin: 50px auto;
   text-align: center;
-  padding: 50px;
+  padding: 20px;
+  animation: fadeIn 1.2s ease;
 }
 
-.about img {
-  border-radius: 50%;
+.content h2 {
+  color: #516b7b;
+  font-size: 28px;
   margin-bottom: 20px;
 }
 
-/* ===== Contact Section ===== */
-.contact {
-  text-align: center;
-  padding: 40px;
+.service-list {
+  list-style: none;
+  margin-top: 20px;
+  text-align: left;
+  line-height: 1.8;
 }
 
-form {
-  background-color: white;
+.service-list li {
+  background: #f2f6ff;
+  margin: 10px 0;
+  padding: 12px;
+  border-left: 4px solid #0b3d91;
+  border-radius: 4px;
+  transition: transform 0.1s tease;
+}
+
+.service-list li:hover {
+  transform: translateX(5px);
+}
+
+/* ---------- Contact Info ---------- */
+.contact-info {
+  list-style: none;
+  margin-top: 20px;
+  line-height: 2;
+  text-align: left;
   display: inline-block;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
-input, textarea {
-  width: 250px;
-  padding: 8px;
-  margin: 5px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.contact-info li {
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
-button {
-  background-color: #0077cc;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
+.contact-info li:hover {
+  transform: translateX(5px);
+  color: #0b3d91;
 }
 
-button:hover {
-  background-color: #005fa3;
-}
-
-/* ===== Footer ===== */
+/* ---------- Footer ---------- */
 footer {
-  background-color: #333;
+  background-color: #0b3d91;
   color: white;
   text-align: center;
-  padding: 10px;
+  padding: 12px;
+  margin-top: 40px;
+  font-size: 14px;
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ---------- Responsive Design ---------- */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+  }
+
+  .hero h2 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .content {
+    padding: 10px;
+  }
+
+  .service-list li {
+    font-size: 15px;
+  }
+}
+footer {
   position: fixed;
-  width: 100%;
   bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #0b3d91;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-size: 14px;
 }
